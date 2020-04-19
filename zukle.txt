@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+bool search = false, zero = false;
+int n,m,k=0;
+cin >> n >> m;
+int N[n][m];
+for(int i = 0; i < n; i++){
+  for(int j = 0; j < m; j++){
+    cin >> N[i][j];
+  }
+}
+pair <int, int> A[n*m];
+/*for(int i = 0; i < n; i++){
+  for(int j = 0; j < m; j++){
+    if(N[i][j] == 0 && zero == false){
+      A[k].first = 0;
+      A[k].second++;
+      k = 1;
+      zero = true;
+    }
+  }
+}*/
+for(int i = 0; i < n; i++){
+  for(int j = 0; j < m; j++){
+    for(int o = 0; o < n*m; o++){
+      if(A[o].first == N[i][j]){
+        search = true;
+        A[o].second++;
+        }
+      }
+     if(search == false){
+       A[k].first = N[i][j];
+       A[k].second++;
+       k++;
+     }
+    }
+  }
+  for (int i = 0; i < n*m; i++)cout << A[i].second << " ";
+}
